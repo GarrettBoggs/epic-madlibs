@@ -10,7 +10,7 @@ import android.widget.EditText;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.submitButton) Button mSubmitButton;
     @Bind(R.id.text1) EditText mText1;
     @Bind(R.id.text2) EditText mText2;
@@ -26,9 +26,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        mSubmitButton.setOnClickListener(new View.OnClickListener() {
+        mSubmitButton.setOnClickListener(this);
+
+    }
+
             @Override
             public void onClick(View v){
+            if (v == mSubmitButton) {
                 String text1 = mText1.getText().toString();
                 String text2 = mText2.getText().toString();
                 String text3 = mText3.getText().toString();
@@ -36,15 +40,12 @@ public class MainActivity extends AppCompatActivity {
                 String text5 = mText5.getText().toString();
                 String text6 = mText6.getText().toString();
 
+                String[] storyArray = {text1, text2, text3, text4, text5, text6};
+
                 Intent intent = new Intent(MainActivity.this, StoryActivity.class);
-                intent.putExtra("text1",text1);
-                intent.putExtra("text2",text2);
-                intent.putExtra("text3",text3);
-                intent.putExtra("text4",text4);
-                intent.putExtra("text5",text5);
-                intent.putExtra("text6",text6);
+                intent.putExtra("storyArray", storyArray);
                 startActivity(intent);
             }
-        });
-    }
+        }
+
 }

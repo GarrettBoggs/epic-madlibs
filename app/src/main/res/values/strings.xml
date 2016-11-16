@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">epic-madlibs</string>
+
+    <string-array name="my_books">
+        <item>Story 1</item>
+        <item>Story 2</item>
+        <item>Story 3</item>
+    </string-array>
 </resources>
